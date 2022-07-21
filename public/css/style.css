@@ -66,9 +66,11 @@ h1 {
 }
 
 .questions {
+  background-color: rgba(251, 107, 107, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 80px;
 }
 
 .question {
@@ -91,6 +93,65 @@ h1 {
   height: 23px;
 }
 
+.question-turned {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: space-between;
+  position: relative;
+  color: rgba(51, 51, 51, 1);
+  font-size: 18px;
+  font-weight: 400;
+  background-color: rgba(255, 255, 212, 1);
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.15);
+  padding: 10px 15px;
+  padding-top: 18px;  
+  min-height: 131px;
+  max-height: 1000px;
+  width: 80%;
+  margin-bottom: 25px;
+}
+
+.question-turned h3 {
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.question-turned img {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+.question-turned button {
+  height: 36px;
+  width: 80px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  font-size: 12px;
+  font-weight: 400;
+}
+.red-button {
+  background-color: rgba(255, 48, 48, 1);
+  /*position: absolute;
+  bottom: 10px;
+  left: 20px;*/
+}
+.orange-button {
+  background-color: rgba(255, 146, 46, 1);
+  /*position: absolute;
+  bottom: 10px;
+  left: 112px;*/
+}
+.green-button {
+  background-color: rgba(47, 190, 52, 1);
+  /*position: absolute;
+  bottom: 10px;
+  left: 205px;*/
+}
+
 .footer {
   display: flex;
   justify-content: center;
@@ -105,6 +166,7 @@ h1 {
   font-size: 18px;
   font-weight: 400;
   box-shadow: 0px -4px 6px 0px rgba(0, 0, 0, 0.05);
+  z-index: 1;
 }
 
 @media (max-width: 375px) {
