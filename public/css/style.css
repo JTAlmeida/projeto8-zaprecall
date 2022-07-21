@@ -1,7 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@300;400;500;600;700&family=Righteous&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Recursive:wght@300;400;500;600;700&family=Righteous&display=swap");
 
-
+html,
 body {
-    /*font-family: 'Righteous', cursive;*/
-    font-family: 'Recursive', sans-serif;
+  height: 100%;
+}
+
+h1 {
+  font-family: "Righteous", cursive;
+  color: rgba(255, 255, 255, 1);
+  font-size: 36px;
+  font-weight: 400;
+  margin-top: 48px;
+}
+
+.root {
+  display: flex;
+  justify-content: center;
+  width: 375px;
+  height: 100%;
+  background-color: rgba(251, 107, 107, 1);
+  font-family: "Recursive", sans-serif;
+}
+
+.landing-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.landing-page img {
+  margin-bottom: 15px;
+}
+
+.landing-page h1 {
+  margin: 13px 59px;
+}
+
+.landing-page button {
+  width: 246px;
+  margin: 35px 64px;
+  background-color: rgba(255, 255, 255, 1);
+  color: rgba(215, 9, 0, 1);
+  font-size: 18px;
+  padding: 14px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(215, 9, 0, 1);
+  border-radius: 4px;
+}
+
+.recall-page {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+.header img {
+  margin-top: 36px;
+  margin-bottom: 50px;
+  margin-right: 20px;
+}
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+  padding: 0 20px;
+  margin-bottom: 25px;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 1);
+  color: rgba(51, 51, 51, 1);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.question img {
+  height: 23px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 70px;
+  width: 375px;
+  background-color: rgba(255, 255, 255, 1);
+  color: rgba(51, 51, 51, 1);
+  font-size: 18px;
+  font-weight: 400;
+  box-shadow: 0px -4px 6px 0px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 375px) {
 }
