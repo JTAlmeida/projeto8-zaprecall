@@ -5,12 +5,6 @@ import right from "../assets/right.png";
 import almostWrong from "../assets/almost-wrong.png";
 import wrong from "../assets/wrong.png";
 
-const buttons = [
-  { class: "green-button", check: "right", text: "Zap!" },
-  { class: "orange-button", check: "almost-wrong", text: "Quase não lembrei" },
-  { class: "red-button", check: "wrong", text: "Não lembrei" },
-];
-
 export default function Turncard({
   id,
   question,
@@ -19,6 +13,10 @@ export default function Turncard({
   setcheckThisAnswer,
   answerCount,
   setanswerCount,
+  rightanswerCount,
+  setrightAnswerCount,
+  checkAnswer,
+  setcheckAnswer,
 }) {
   const [screen, setScreen] = React.useState(true);
 
@@ -27,9 +25,13 @@ export default function Turncard({
       <>
         <div className="question wrong">
           <h3>Pergunta {id}</h3>
-          <img src={wrong}/>
+          <img src={wrong} />
         </div>
-        <Recallfooter answerCount={answerCount}/>
+        <Recallfooter
+          answerCount={answerCount}
+          checkAnswer={checkAnswer}
+          rightanswerCount={rightanswerCount}
+        />
       </>
     );
   } else if (checkThisAnswer === "almost-wrong") {
@@ -37,9 +39,13 @@ export default function Turncard({
       <>
         <div className="question almost-wrong">
           <h3>Pergunta {id}</h3>
-          <img src={almostWrong}/>
+          <img src={almostWrong} />
         </div>
-        <Recallfooter answerCount={answerCount}/>
+        <Recallfooter
+          answerCount={answerCount}
+          checkAnswer={checkAnswer}
+          rightanswerCount={rightanswerCount}
+        />
       </>
     );
   } else if (checkThisAnswer === "right") {
@@ -47,9 +53,13 @@ export default function Turncard({
       <>
         <div className="question right">
           <h3>Pergunta {id}</h3>
-          <img src={right}/>
+          <img src={right} />
         </div>
-        <Recallfooter answerCount={answerCount}/>
+        <Recallfooter
+          answerCount={answerCount}
+          checkAnswer={checkAnswer}
+          rightanswerCount={rightanswerCount}
+        />
       </>
     );
   } else {
@@ -63,17 +73,37 @@ export default function Turncard({
         ) : (
           <div className="question-turned">
             <h3>{answer}</h3>
-            {buttons.map((button) => (
-              <button
-                className={button.class}
-                onClick={() => {
-                  setcheckThisAnswer(button.check);
-                  setanswerCount(answerCount+=1);
-                }}
-              >
-                {button.text}
-              </button>
-            ))}
+            <button
+              className="red-button"
+              onClick={() => {
+                setcheckThisAnswer("wrong");
+                setanswerCount((answerCount += 1));
+                setcheckAnswer([...checkAnswer, { wrong }]);
+              }}
+            >
+              Não lembrei
+            </button>
+            <button
+              className="orange-button"
+              onClick={() => {
+                setcheckThisAnswer("almost-wrong");
+                setanswerCount((answerCount += 1));
+                setcheckAnswer([...checkAnswer, { almostWrong }]);
+              }}
+            >
+              Quase não lembrei
+            </button>
+            <button
+              className="green-button"
+              onClick={() => {
+                setcheckThisAnswer("right");
+                setanswerCount((answerCount += 1));
+                setrightAnswerCount((rightanswerCount += 1));
+                setcheckAnswer([...checkAnswer, { right }]);
+              }}
+            >
+              Zap!
+            </button>
           </div>
         )}
       </>

@@ -48,27 +48,43 @@ const selectedQuestions = [];
 
 export default function Questions() {
   const [answerCount, setanswerCount] = React.useState(0);
+  const [rightanswerCount, setrightanswerCount] = React.useState(0);
+  const [checkAnswer, setcheckAnswer] = React.useState([]);
 
   return (
     <>
-    <div className="questions">
-      {selectedQuestions.map((question, index) => (
-        <Question
-          key={index}
-          id={index + 1}
-          question={question.Q}
-          answer={question.A}
-          answerCount={answerCount}
-          setanswerCount={setanswerCount}
-        />
-      ))}
-    </div>
-    <Recallfooter />
+      <div className="questions">
+        {selectedQuestions.map((question, index) => (
+          <Question
+            key={index}
+            id={index + 1}
+            question={question.Q}
+            answer={question.A}
+            answerCount={answerCount}
+            setanswerCount={setanswerCount}
+            rightanswerCount={rightanswerCount}
+            setrightAnswerCount={setrightanswerCount}
+            checkAnswer={checkAnswer}
+            setcheckAnswer={setcheckAnswer}
+          />
+        ))}
+      </div>
+      <Recallfooter />
     </>
   );
 }
 
-function Question({ id, question, answer, answerCount, setanswerCount}) {
+function Question({
+  id,
+  question,
+  answer,
+  answerCount,
+  setanswerCount,
+  rightanswerCount,
+  setrightAnswerCount,
+  checkAnswer,
+  setcheckAnswer,
+}) {
   const [screen, setScreen] = React.useState(true);
   const [checkThisAnswer, setcheckThisAnswer] = React.useState("");
 
@@ -76,22 +92,26 @@ function Question({ id, question, answer, answerCount, setanswerCount}) {
     <>
       {screen ? (
         <>
-        <div className="question">
-          <h3>Pergunta {id}</h3>
-          <img src={play} onClick={() => setScreen(!screen)} />
-        </div>
+          <div className="question">
+            <h3>Pergunta {id}</h3>
+            <img src={play} onClick={() => setScreen(!screen)} />
+          </div>
         </>
       ) : (
         <>
-        <Turncard
-          id={id}
-          question={question}
-          answer={answer}
-          checkThisAnswer={checkThisAnswer}
-          setcheckThisAnswer={setcheckThisAnswer}
-          answerCount={answerCount}
-          setanswerCount={setanswerCount}
-        />
+          <Turncard
+            id={id}
+            question={question}
+            answer={answer}
+            checkThisAnswer={checkThisAnswer}
+            setcheckThisAnswer={setcheckThisAnswer}
+            answerCount={answerCount}
+            setanswerCount={setanswerCount}
+            rightanswerCount={rightanswerCount}
+            setrightAnswerCount={setrightAnswerCount}
+            checkAnswer={checkAnswer}
+            setcheckAnswer={setcheckAnswer}
+          />
         </>
       )}
     </>
