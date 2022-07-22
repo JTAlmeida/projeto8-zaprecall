@@ -10,8 +10,6 @@ export default function Recallfooter({
     for (let key in obj) return obj[key];
   }
 
-  console.log(checkAnswer);
-
   if (answerCount === 4 && rightanswerCount === 4) {
     return (
       <>
