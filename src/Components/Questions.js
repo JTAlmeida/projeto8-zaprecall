@@ -45,10 +45,9 @@ const selectedQuestions = [];
     selectedQuestions.push(copyQuestions[i]);
   }
 })();
-console.log(selectedQuestions);
 
 export default function Questions() {
-  const [answerCount, setAnswerCount] = React.useState(0);
+  const [answerCount, setanswerCount] = React.useState(0);
 
   return (
     <>
@@ -60,28 +59,30 @@ export default function Questions() {
           question={question.Q}
           answer={question.A}
           answerCount={answerCount}
-          setAnswerCount={setAnswerCount}
+          setanswerCount={setanswerCount}
         />
       ))}
     </div>
-    
-    <Recallfooter answerCount={answerCount}/>
+    <Recallfooter />
     </>
   );
 }
 
-function Question({ id, question, answer, answerCount, setAnswerCount }) {
+function Question({ id, question, answer, answerCount, setanswerCount}) {
   const [screen, setScreen] = React.useState(true);
   const [checkThisAnswer, setcheckThisAnswer] = React.useState("");
 
   return (
     <>
       {screen ? (
+        <>
         <div className="question">
           <h3>Pergunta {id}</h3>
-          <img src={play} onClick={() => setScreen(!screen)}></img>
+          <img src={play} onClick={() => setScreen(!screen)} />
         </div>
+        </>
       ) : (
+        <>
         <Turncard
           id={id}
           question={question}
@@ -89,8 +90,9 @@ function Question({ id, question, answer, answerCount, setAnswerCount }) {
           checkThisAnswer={checkThisAnswer}
           setcheckThisAnswer={setcheckThisAnswer}
           answerCount={answerCount}
-          setAnswerCount={setAnswerCount}
+          setanswerCount={setanswerCount}
         />
+        </>
       )}
     </>
   );

@@ -136,23 +136,26 @@ h1 {
 }
 .red-button {
   background-color: rgba(255, 48, 48, 1);
-  /*position: absolute;
-  bottom: 10px;
-  left: 20px;*/
 }
 .orange-button {
   background-color: rgba(255, 146, 46, 1);
-  /*position: absolute;
-  bottom: 10px;
-  left: 112px;*/
 }
 .green-button {
   background-color: rgba(47, 190, 52, 1);
-  /*position: absolute;
-  bottom: 10px;
-  left: 205px;*/
 }
 
+.right{
+  text-decoration: line-through;
+  color: rgba(47, 190, 52, 1);
+}
+.almost-wrong{
+  text-decoration: line-through;
+  color: rgba(255, 146, 46, 1);
+}
+.wrong{
+  text-decoration: line-through;
+  color: rgba(255, 48, 48, 1);
+}
 .footer {
   display: flex;
   justify-content: center;
