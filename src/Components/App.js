@@ -1,5 +1,7 @@
 import Landingpage from "./Landingpage";
 import Initrecall from "./Initrecall";
+import "../css/reset.css";
+import "../css/style.css";
 import React from "react";
 
 export default function App() {

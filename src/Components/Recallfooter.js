@@ -1,7 +1,9 @@
-export default function Recallfooter(){
-    return (
+export default function Recallfooter({answerCount}){
+    console.log(answerCount);
+
+      return (
         <div className="footer">
-          <h2>0/4 CONCLUÍDOS</h2>
+          <h2>{answerCount}/4 CONCLUÍDOS</h2>
         </div>
-    )
-}
+      )
+    }

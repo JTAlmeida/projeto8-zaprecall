@@ -1,16 +1,17 @@
 import Recallheader from "./Recallheader";
 import Questions from "./Questions";
-import Recallfooter from "./Recallfooter";
+
+import React from "react";
 
 export default function Initrecall() {
+  const [countAnswers, setcountAnswers] = React.useState(0);
+
   return (
     <>
       <div className="recall-page">
         <Recallheader />
 
-        <Questions />
-
-        <Recallfooter />
+        <Questions countAnswers={countAnswers} setcountAnswers={setcountAnswers}/>
       </div>
     </>
   );

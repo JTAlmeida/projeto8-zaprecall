@@ -1,5 +1,7 @@
 import React from "react";
-import Firstquestion from "./Firstquestion";
+import Recallfooter from "./Recallfooter";
+import Turncard from "./Turncard";
+import play from "../assets/play.png";
 
 const questions = [
   {
@@ -26,8 +28,7 @@ const questions = [
   },
   {
     Q: "Usamos estado (state) para __",
-    A:
-      "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente.",
+    A: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente.",
   },
 ];
 
@@ -47,7 +48,10 @@ const selectedQuestions = [];
 console.log(selectedQuestions);
 
 export default function Questions() {
+  const [answerCount, setAnswerCount] = React.useState(0);
+
   return (
+    <>
     <div className="questions">
       {selectedQuestions.map((question, index) => (
         <Question
@@ -55,25 +59,38 @@ export default function Questions() {
           id={index + 1}
           question={question.Q}
           answer={question.A}
+          answerCount={answerCount}
+          setAnswerCount={setAnswerCount}
         />
       ))}
     </div>
+    
+    <Recallfooter answerCount={answerCount}/>
+    </>
   );
 }
 
-
-function Question(props) {
+function Question({ id, question, answer, answerCount, setAnswerCount }) {
   const [screen, setScreen] = React.useState(true);
+  const [checkThisAnswer, setcheckThisAnswer] = React.useState("");
 
   return (
     <>
       {screen ? (
         <div className="question">
-          <h3>Pergunta {props.id}</h3>
-          <img src="assets/play.png" onClick={() => setScreen(!screen)}></img>
+          <h3>Pergunta {id}</h3>
+          <img src={play} onClick={() => setScreen(!screen)}></img>
         </div>
       ) : (
-        <Firstquestion question={props.question} answer={props.answer}/>
+        <Turncard
+          id={id}
+          question={question}
+          answer={answer}
+          checkThisAnswer={checkThisAnswer}
+          setcheckThisAnswer={setcheckThisAnswer}
+          answerCount={answerCount}
+          setAnswerCount={setAnswerCount}
+        />
       )}
     </>
   );
