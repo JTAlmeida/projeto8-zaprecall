@@ -88,6 +88,7 @@ export default function Turncard({
               onClick={() => {
                 setcheckThisAnswer("almost-wrong");
                 setanswerCount((answerCount += 1));
+                setrightAnswerCount((rightanswerCount += 1));
                 setcheckAnswer([...checkAnswer, { almostWrong }]);
               }}
             >
