@@ -17,6 +17,7 @@ export default function Turncard({
   setrightAnswerCount,
   checkAnswer,
   setcheckAnswer,
+  deckLength,
 }) {
   const [screen, setScreen] = React.useState(true);
 
@@ -31,6 +32,7 @@ export default function Turncard({
           answerCount={answerCount}
           checkAnswer={checkAnswer}
           rightanswerCount={rightanswerCount}
+          deckLength={deckLength}
         />
       </>
     );
@@ -45,6 +47,7 @@ export default function Turncard({
           answerCount={answerCount}
           checkAnswer={checkAnswer}
           rightanswerCount={rightanswerCount}
+          deckLength={deckLength}
         />
       </>
     );
@@ -59,6 +62,7 @@ export default function Turncard({
           answerCount={answerCount}
           checkAnswer={checkAnswer}
           rightanswerCount={rightanswerCount}
+          deckLength={deckLength}
         />
       </>
     );

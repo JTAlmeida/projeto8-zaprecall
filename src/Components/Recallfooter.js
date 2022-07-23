@@ -5,12 +5,13 @@ export default function Recallfooter({
   answerCount,
   checkAnswer,
   rightanswerCount,
+  deckLength
 }) {
   function firstInObject(obj) {
     for (let key in obj) return obj[key];
   }
 
-  if (answerCount === 4 && rightanswerCount === 4) {
+  if (answerCount === deckLength && rightanswerCount === deckLength) {
     return (
       <>
         <div className="footer overlaid">
@@ -19,7 +20,7 @@ export default function Recallfooter({
             <strong>Parabéns!</strong>
           </div>
           <p>Você não esqueceu de nenhum flashcard!</p>
-          <h2>{answerCount}/4 CONCLUÍDOS</h2>
+          <h2>{answerCount}/{deckLength} CONCLUÍDOS</h2>
           <div className="answer-img">
             {checkAnswer.map((answer) => (
               <img src={firstInObject(answer)} />
@@ -28,7 +29,7 @@ export default function Recallfooter({
         </div>
       </>
     );
-  } else if (answerCount === 4 && rightanswerCount < 4) {
+  } else if (answerCount === deckLength && rightanswerCount < deckLength) {
     return (
       <>
         <div className="footer overlaid">
@@ -37,7 +38,7 @@ export default function Recallfooter({
             <strong>Putz...</strong>
           </div>
           <p>Ainda faltam alguns... Mas não desanime!</p>
-          <h2>{answerCount}/4 CONCLUÍDOS</h2>
+          <h2>{answerCount}/{deckLength} CONCLUÍDOS</h2>
           <div className="answer-img">
             {checkAnswer.map((answer) => (
               <img src={firstInObject(answer)} />
@@ -50,7 +51,7 @@ export default function Recallfooter({
     return (
       <>
         <div className="footer overlaid">
-          <h2>{answerCount}/4 CONCLUÍDOS</h2>
+          <h2>{answerCount}/{deckLength} CONCLUÍDOS</h2>
           <div className="answer-img">
             {checkAnswer.map((answer) => (
               <img src={firstInObject(answer)} />
@@ -62,7 +63,7 @@ export default function Recallfooter({
   } else {
     return (
       <div className="footer">
-        <h2>{answerCount || 0}/4 CONCLUÍDOS</h2>
+        <h2>{answerCount || 0}/{deckLength} CONCLUÍDOS</h2>
       </div>
     );
   }

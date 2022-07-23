@@ -3,7 +3,7 @@ import Recallfooter from "./Recallfooter";
 import Turncard from "./Turncard";
 import play from "../assets/play.png";
 
-const questions = [
+const deck = [
   {
     Q: "O que é JSX?",
     A: "Uma extensão de linguagem do JavaScript.",
@@ -32,17 +32,12 @@ const questions = [
   },
 ];
 
-const copyQuestions = [...questions];
+const shuffledDeck = [...deck];
 
-const selectedQuestions = [];
-
-(function shuffleFlashcards() {
-  for (let i = copyQuestions.length - 1; i > 0; i--) {
+(function shuffleDeck() {
+  for (let i = shuffledDeck.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
-    [copyQuestions[i], copyQuestions[j]] = [copyQuestions[j], copyQuestions[i]];
-  }
-  for (let i = 0; i < 4; i++) {
-    selectedQuestions.push(copyQuestions[i]);
+    [shuffledDeck[i], shuffledDeck[j]] = [shuffledDeck[j], shuffledDeck[i]];
   }
 })();
 
@@ -50,26 +45,28 @@ export default function Questions() {
   const [answerCount, setanswerCount] = React.useState(0);
   const [rightanswerCount, setrightanswerCount] = React.useState(0);
   const [checkAnswer, setcheckAnswer] = React.useState([]);
+  const [deckLength] = React.useState(shuffledDeck.length);
 
   return (
     <>
       <div className="questions">
-        {selectedQuestions.map((question, index) => (
+        {shuffledDeck.map((deck, index) => (
           <Question
             key={index}
             id={index + 1}
-            question={question.Q}
-            answer={question.A}
+            question={deck.Q}
+            answer={deck.A}
             answerCount={answerCount}
             setanswerCount={setanswerCount}
             rightanswerCount={rightanswerCount}
             setrightAnswerCount={setrightanswerCount}
             checkAnswer={checkAnswer}
             setcheckAnswer={setcheckAnswer}
+            deckLength={deckLength}
           />
         ))}
       </div>
-      <Recallfooter />
+      <Recallfooter deckLength={deckLength}/>
     </>
   );
 }
@@ -84,10 +81,11 @@ function Question({
   setrightAnswerCount,
   checkAnswer,
   setcheckAnswer,
+  deckLength,
 }) {
   const [screen, setScreen] = React.useState(true);
   const [checkThisAnswer, setcheckThisAnswer] = React.useState("");
-
+  
   return (
     <>
       {screen ? (
@@ -111,6 +109,7 @@ function Question({
             setrightAnswerCount={setrightAnswerCount}
             checkAnswer={checkAnswer}
             setcheckAnswer={setcheckAnswer}
+            deckLength={deckLength}
           />
         </>
       )}
